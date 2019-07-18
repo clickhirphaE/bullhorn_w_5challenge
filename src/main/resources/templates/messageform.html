@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body bgcolor="#d3d3d3">
+<div class="container">
+    <div class="jumbotron">
+<form action="#" th:action="@{/process}" th:object="${message}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <h2> Post a Message</h2>
+    Title: <input type="text" th:field="*{title}"/>
+    <span th:if="${#fields.hasErrors('title')}"
+          th:errors="*{title}"/></span><br/>
+
+
+    Content: <textarea rows="3" th:field="*{content}"/>
+    <span th:if="${#fields.hasErrors('content')}"
+          th:errors="*{content}"/></span><br/>
+
+
+    <input type="hidden" th:field="*{postedby}"/>
+    <span th:if="${#fields.hasErrors('postedby')}"
+          th:errors="*{postedby}"/></span><br/>
+
+  <input type="date" th:field="*{date|dd/mm/yy}"/>
+
+
+    <span th:if="${#fields.hasErrors('date')}"
+          th:errors="*{date}"/></span>
+
+
+    <input type="submit" value="Submit"/>
+</form>
+    </div>
+</div>
+</body>
+</html>
