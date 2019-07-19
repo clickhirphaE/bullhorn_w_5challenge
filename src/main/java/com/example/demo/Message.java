@@ -30,18 +30,12 @@ public class Message {
     @Size(min=1)
     private final String postedby="Hirpha";
 
-    private Date date;
+
     /*///////////*///////////////////*/
     public Message() {
     }
 
-    public Date getDate() {
-        return date;
-    }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
 
     public long getId() {
         return id;

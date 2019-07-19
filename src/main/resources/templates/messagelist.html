@@ -3,29 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>messagelist</title>
+    <style>
+        .post_message{
+            alignment: left;
+            margin-left: auto;
+            margin-left: 16px;
+            margin-top: 20px;
+            background-color: aliceblue;
+        }
+
+    </style>
 </head>
-<body bgcolor="#d3d3d3">
+<body  >
 
+<center>
+    <table width="50%"; height="60%">
+        <th colspan="3" rowspan="1"></th>
+<a href="/add" class="post_message">Post a Message</a>
 
-<a href="/add">Post a Message</a>
-<table>
     <tr>
 
         <th>title</th>
         <th>content</th>
         <th>posted by</th>
-        <th>At </th>
+
     </tr>
 <tr th:each="message :${messages}">
 
     <td th:text="${message.title}"></td>
     <td th:text="${message.content}"></td>
     <td th:text="${message.postedby}"></td>
-    <td th:date="${message.date}"></td>
-
-    <td>
-        <a href="@{/edit/{id}(id=${message.id})}">Edit</a>
-        <a href="@{/view/{id}(id=${message.id})}">View</a>
+</tr>
+    <tr>
+    <td colspan="3" rowspan="1">
+        <a href="@{/update/{id}(id=${message.id})}">Update</a>
+        <a href="@{/detail/{id}(id=${message.id})}">details</a>
         <a href="@{/delete/{id}(id=${message.id})}">Delete</a>
 
 
@@ -33,5 +45,6 @@
 </tr>
 
 </table>
+</center>
 </body>
 </html>

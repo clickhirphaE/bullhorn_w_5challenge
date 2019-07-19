@@ -38,12 +38,12 @@ public class HomeController {
     }
     @RequestMapping("/detail/{id}")
     public String showCourse(@PathVariable("id") long id,Model model){
-        model.addAttribute("course",messageRepository.findById(id).get());
+        model.addAttribute("message",messageRepository.findById(id).get());
         return "show";
     }
     @RequestMapping("/update/{id}")
     public String updatecourse(@PathVariable("id") long id, Model model){
-        model.addAttribute("course", messageRepository.findById(id).get());
+        model.addAttribute("message", messageRepository.findById(id).get());
         return "messageform";
     }
     @RequestMapping("/delete/{id}")
