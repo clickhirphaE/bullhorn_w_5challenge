@@ -8,9 +8,6 @@ import javax.persistence.Id;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
-import java.util.Date;
-
 @Entity  //this annotation tells u a table should be created in your database
 public class Message {
 
@@ -27,15 +24,13 @@ public class Message {
     private String content;
 
     @NotNull
-    @Size(min=1)
-    private final String postedby="Hirpha";
+    @Size(min=10)
+    private String postedby;
 
 
-    /*///////////*///////////////////*/
+
     public Message() {
     }
-
-
 
     public long getId() {
         return id;
@@ -63,6 +58,10 @@ public class Message {
 
     public String getPostedby() {
         return postedby;
+    }
+
+    public void setPostedby(String postedby) {
+        this.postedby = postedby;
     }
 
 

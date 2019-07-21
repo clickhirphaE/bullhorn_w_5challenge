@@ -1,50 +1,47 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>messagelist</title>
+    <meta charset="UTF-8" >
+    <title>Title</title>
     <style>
-        .post_message{
-            alignment: left;
-            margin-left: auto;
-            margin-left: 16px;
-            margin-top: 20px;
-            background-color: aliceblue;
+
+table
+{
+    background-color: #f2f2f2;
+    background-size: cover;
+    width: 500px;
+    height: 100px;
+    border-radius: 10px;
+}
+        a
+        {
+            text-decoration: none;
         }
 
     </style>
 </head>
-<body  >
+<body>
+<table align="center">
 
-<center>
-    <table width="50%"; height="60%">
-        <th colspan="3" rowspan="1"></th>
-<a href="/add" class="post_message">Post a Message</a>
-
+    <tr><td colspan="6"><a href="/add"><button style="background-color: blue; border-radius: 4px";><h3>Add message</h3></button></a></td></tr>
     <tr>
-
-        <th>title</th>
+        <th>Title</th>
         <th>content</th>
-        <th>posted by</th>
+        <th>postedby</th>
 
     </tr>
-<tr th:each="message :${messages}">
 
-    <td th:text="${message.title}"></td>
-    <td th:text="${message.content}"></td>
-    <td th:text="${message.postedby}"></td>
-</tr>
-    <tr>
-    <td colspan="3" rowspan="1">
-        <a href="@{/update/{id}(id=${message.id})}">Update</a>
-        <a href="@{/detail/{id}(id=${message.id})}">details</a>
-        <a href="@{/delete/{id}(id=${message.id})}">Delete</a>
+    <tr th:each="message :${messages}">
+        <td th:text="${message.title}"></td>
+        <td th:text="${message.content}"></td>
+        <td th:text="${message.postedby}"></td>
 
+        <td> <a th:href="@{/update/{id}(id=${message.id})}">Update</a></td>
+        <td> <a th:href="@{/detail/{id}(id=${message.id})}">Details</a></td>
+        <td><a th:href="@{/delete/{id}(id=${message.id})}">Delete</a></td>
 
-    </td>
-</tr>
+    </tr>
 
 </table>
-</center>
 </body>
 </html>

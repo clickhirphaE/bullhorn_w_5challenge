@@ -17,13 +17,13 @@ public class HomeController {
     MessageRepository messageRepository;
 
     @RequestMapping("/")
-    public String listCourses(Model model ){
+    public String listMessages(Model model ){
         model.addAttribute("messages",messageRepository.findAll());
 
         return "messagelist";
     }
     @GetMapping("/add")
-    public String courseForm(Model model){
+    public String messageForm(Model model){
         model.addAttribute("message", new Message());
         return "messageform";
     }
@@ -37,17 +37,17 @@ public class HomeController {
         return "redirect:/";
     }
     @RequestMapping("/detail/{id}")
-    public String showCourse(@PathVariable("id") long id,Model model){
+    public String showMessage(@PathVariable("id") long id,Model model){
         model.addAttribute("message",messageRepository.findById(id).get());
         return "show";
     }
     @RequestMapping("/update/{id}")
-    public String updatecourse(@PathVariable("id") long id, Model model){
+    public String updateMessage(@PathVariable("id") long id, Model model){
         model.addAttribute("message", messageRepository.findById(id).get());
         return "messageform";
     }
     @RequestMapping("/delete/{id}")
-    public String delCourse(@PathVariable("id") long id){
+    public String delMessage(@PathVariable("id") long id){
         messageRepository.deleteById(id);
         return "redirect:/";
     }

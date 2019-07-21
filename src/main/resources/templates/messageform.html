@@ -1,62 +1,66 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-   <style>
-       .nav{
-           alignment: left;
-           margin-left: auto;
-           background-attachment: fixed;
-           background-color: aliceblue;
-           margin-left: auto;
-           margin-top: 20px;
-       }
 
+    <style>
+        input[type=text] {
+            width: 100%;
+            padding: 20px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+        input[type=submit] {
+            width: 60%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
 
-   </style>
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        div {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+
+            height: 100%;
+        }
+
+    </style>
 </head>
-<body bgcolor="#00ced1">
-<div class="container">
-    <div class="page-header">
-    </div>
+<body>
+<div>
 <form action="#" th:action="@{/process}" th:object="${message}" method="post">
+    <table align="center">
+        <tr>
+            <td colspan="2"><h2 align="center">what is in your mind?</h2></td></tr>
     <input type="hidden" th:field="*{id}"/>
-
-    <center style="border: darkturquoise">
-        <div class="nav">
-        <h2> Post a Message</h2>
-        Title <input type="text" th:field="*{title}"/>
-    <span th:if="${#fields.hasErrors('title')}"
-          th:errors="*{title}"/></span><br/>
+        <tr><td> Title:</td><td> <input type="text" th:field="*{title}"/>
+    <td><span th:if="${#fields.hasErrors('title')}"
+              th:errors="*{title}"/></span><br/></td></td></tr>
 
 
-    Content: <textarea rows="3" th:field="*{content}"/>
-    <span th:if="${#fields.hasErrors('content')}"
-          th:errors="*{content}"/></span><br/>
+        <tr><td>Content:</td><td> <textarea rows="3" th:field="*{content}"/>
+   <td> <span th:if="${#fields.hasErrors('content')}"
+              th:errors="*{content}"/></span><br/></td></td></tr>
 
+        <tr><td>postedby: </td><td><input type="text" th:field="*{postedby}"/>
+    <td><span th:if="${#fields.hasErrors('postedby')}"
+              th:errors="*{postedby}"/></span><br/></td></td></tr>
 
-    <input type="hidden" th:field="*{postedby}"/>
-    <span th:if="${#fields.hasErrors('postedby')}"
-          th:errors="*{postedby}"/></span><br/>
-
- <!-- <input type="date" th:field="*{date|dd/mm/yy}"/>
-
-
-    <span th:if="${#fields.hasErrors('date')}"
-          th:errors="*{date}"/></span>-->
-
-
-    <input type="submit" value="Submit"/>
-        </div>
-
-    </center>
+        <tr><td colspan="2"><input type="submit" value="Submit"/></td></tr>
+    </table>
 </form>
-    </div>
+</div>
 </body>
 </html>

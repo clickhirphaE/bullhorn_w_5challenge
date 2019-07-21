@@ -2,15 +2,15 @@
 <html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>by
+    <title>Title</title>
 </head>
 <body>
-<a href="/"> Show all posted Message</a><br/>
+<a href="/"> Show All Messages</a><br/>
 Title:<span th:text="${message.title}"></span><br/>
 content:<span th:text="${message.content}"></span><br/>
-posted by:<span th:text="${message.postedby}"></span><br/>
+postedby:<span th:text="${message.postedby}"></span><br/>
 
 
-<a th:href="@{/delete/{id}(id=${message.id})}">delete this message</a>
+<a th:href="@{/delete/{id}(id=${course.id})}">delete this Message</a>
 </body>
 </html>
